@@ -1,4 +1,6 @@
-﻿namespace WebApiZap
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace WebApiZap
 {
     public class StartUp
     {
@@ -16,6 +18,11 @@
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+
+            //configuración base de datos 
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
