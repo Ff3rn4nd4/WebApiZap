@@ -18,7 +18,7 @@ namespace WebApiZap.Controllers
             this.dbContext = context;
         }
 
-
+        //consultar datos
         [HttpGet]
         public async Task<ActionResult<List<Zapato>>> Get()
         {
@@ -33,6 +33,7 @@ namespace WebApiZap.Controllers
             return await dbContext.Zapatos.ToListAsync();
         }
 
+        //ingresar datos
         [HttpPost]
         public async Task<ActionResult> Post(Zapato zapato)
         {
@@ -40,6 +41,22 @@ namespace WebApiZap.Controllers
             await dbContext.SaveChangesAsync();
             return Ok();
         }
+
+        //actualizar datos
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Put(Zapato zapato, int id)
+        {
+            if(zapato.Id != id)
+            {
+                return BadRequest("El id ingresado no coincide con el establecido en la url");
+            }
+
+            dbContext.Update(zapato);
+            await dbContext.SaveChangesAsync();
+            return Ok();
+        }
+
+
 
     }
 }
