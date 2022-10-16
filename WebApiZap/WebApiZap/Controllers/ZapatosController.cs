@@ -57,6 +57,24 @@ namespace WebApiZap.Controllers
         }
 
 
+        //eliminar datos
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var exist = await dbContext.Zapatos.AnyAsync(x => x.Id == id);
 
+            if (!exist)
+            {
+                return NotFound("El id no fue encontrado ");
+            }
+
+            dbContext.Remove(new Zapato()
+            {
+                Id = id
+            });
+
+            await dbContext.SaveChangesAsync();
+            return Ok();
+        }
     }
 }
