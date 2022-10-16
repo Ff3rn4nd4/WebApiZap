@@ -12,6 +12,7 @@ namespace WebApiZap
 
         //tablas para cada entidad
         public DbSet<Zapato> Zapatos { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
     }
 
     
