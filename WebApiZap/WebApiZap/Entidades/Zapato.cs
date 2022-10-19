@@ -6,5 +6,8 @@
         public int Id { get; set; }
         public int Talla { get; set; }
         public string Color { get; set; }
+
+        //conectando entidades
+        public List<Pedido> pedidos { get; set; }
     }
 }

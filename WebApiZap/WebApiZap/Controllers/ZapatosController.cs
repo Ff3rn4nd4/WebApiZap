@@ -30,7 +30,7 @@ namespace WebApiZap.Controllers
             };*/
 
             //ayuda a obtener un listado desde la base
-            return await dbContext.Zapatos.ToListAsync();
+            return await dbContext.Zapatos.Include(x => x.pedidos).ToListAsync();
         }
 
         //ingresar datos

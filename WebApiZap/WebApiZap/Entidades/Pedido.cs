@@ -7,6 +7,7 @@
         public string Marca { get; set; }
 
         //conectando entidades
-        public List<Zapato> zapatos { get; set; }
+        public int ZapatoId { get; set; }
+        public Zapato Zapato { get; set; }
     }
 }
